@@ -32,7 +32,7 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Form data submitted:', formData);
+    console.log('Form data submittgyufed:', formData);
     setIsSubmitted(true);
     setFormData({ name: '', email: '', subject: '', message: '' });
     setTimeout(() => setIsSubmitted(false), 5000); 
