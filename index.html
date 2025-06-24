@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Designer Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            'brand-primary': 'rgb(var(--color-primary-val) / <alpha-value>)',
+            'brand-secondary': 'rgb(var(--color-secondary-val) / <alpha-value>)',
+            'brand-dark': 'rgb(var(--color-dark-val) / <alpha-value>)',
+            'brand-card': 'rgb(var(--color-card-val) / <alpha-value>)',
+            'brand-light': 'rgb(var(--color-light-val) / <alpha-value>)',
+            'brand-accent': 'rgb(var(--color-accent-val) / <alpha-value>)',
+            'brand-foreground': 'rgb(var(--color-foreground-val) / <alpha-value>)',
+            'brand-foreground-muted': 'rgb(var(--color-foreground-muted-val) / <alpha-value>)',
+            'brand-button-text': 'rgb(var(--color-button-text-val) / <alpha-value>)',
+          },
+          animation: {
+            'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+            'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
+            'slide-in-right': 'slideInRight 0.8s ease-out forwards',
+            'subtle-pulse': 'subtlePulse 2s infinite ease-in-out',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            slideInLeft: {
+              '0%': { opacity: '0', transform: 'translateX(-30px)' },
+              '100%': { opacity: '1', transform: 'translateX(0)' },
+            },
+            slideInRight: {
+              '0%': { opacity: '0', transform: 'translateX(30px)' },
+              '100%': { opacity: '1', transform: 'translateX(0)' },
+            },
+            subtlePulse: {
+              '0%, 100%': { transform: 'scale(1)' },
+              '50%': { transform: 'scale(1.02)' },
+            }
+          }
+        },
+      },
+      plugins: [],
+      content: [
+        "./index.html",
+        "./**/*.{js,ts,jsx,tsx}",
+      ],
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer base {
+      html {
+        font-family: 'Poppins', sans-serif;
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: rgb(var(--color-dark-val));
+        color: rgb(var(--color-foreground-val));
+        @apply antialiased transition-colors duration-300;
+        cursor: none; /* Hide default cursor */
+      }
+      /* Ensure interactive elements also hide default cursor if needed */
+      a, button, [data-cursor-interactive="true"] {
+        cursor: none;
+      }
+    }
+  </style>
+  <style>
+    /* Custom Cursor Styles */
+    .cursor-dot, .cursor-outline, .cursor-particle {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      border-radius: 50%;
+      mix-blend-mode: difference; /* Or 'normal' if difference causes issues with theme colors */
+      z-index: 9999;
+      transform: translate(-50%, -50%); /* Center the cursor elements */
+    }
+
+    .cursor-dot {
+      width: 8px;
+      height: 8px;
+      background-color: white; /* Will be inverted by mix-blend-mode */
+      transition: transform 0.05s ease-out; /* Faster transition for the dot */
+    }
+
+    .cursor-outline {
+      width: 30px;
+      height: 30px;
+      border: 2px solid white; /* Will be inverted by mix-blend-mode */
+      background-color: transparent;
+      transition: width 0.2s ease-out, height 0.2s ease-out, border-width 0.2s ease-out, transform 0.1s ease-out; /* Slower for outline trail */
+    }
+
+    .cursor-outline.interactive {
+      width: 45px;
+      height: 45px;
+      border-width: 3px;
+      /* Consider adding a subtle background or stronger border for interactive state if not using mix-blend-mode properly */
+    }
+    
+    .cursor-outline.clicked {
+        transform: translate(-50%, -50%) scale(0.8);
+        border-width: 4px;
+    }
+
+    .cursor-particle {
+        /* background-color will be set dynamically via style attribute */
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+
+    /* Hide custom cursor when mouse is outside the window */
+    body:not(:hover) .cursor-dot,
+    body:not(:hover) .cursor-outline,
+    body:not(:hover) .cursor-particle {
+      opacity: 0;
+      visibility: hidden;
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.6.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
