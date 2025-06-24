@@ -95,7 +95,7 @@ const Contact: React.FC = () => {
                 <EmailIconSolid className="w-7 h-7 text-brand-accent mt-1" />
                 <div>
                   <h4 className="text-lg font-medium text-brand-foreground">Email</h4>
-                  <a href="mailto:designer@example.com" data-cursor-interactive="true" className="text-brand-accent hover:opacity-80 transition-opacity">designer@example.com</a>
+                  <a href="mailto:designer@example.com" data-cursor-interactive="true" className="text-brand-accent hover:opacity-80 transition-opacity">sr.849022@example.com</a>
                 </div>
               </div>
               <div className="flex items-start space-x-4 mb-5">
